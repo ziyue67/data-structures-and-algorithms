@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="复盘">
+      <UniqueIdentifier>{6e6d918e-faeb-4df9-8f34-5285a695973c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="data structures and algorithms.cpp">
@@ -20,6 +23,9 @@
     </ClCompile>
     <ClCompile Include="数组的增删改查.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="复盘.cpp">
+      <Filter>复盘</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
