@@ -70,8 +70,8 @@
 //	}
 //	int find(int val) // 查找值为val的元素，返回其索引
 //	{
-//		for (int i = 0; i < mCur; i++) {
-//			if (mpArr[i] == val) {
+//		for (int i = 0; i < mCur; i++) { // 线性查找 O(n)
+//			if (mpArr[i] == val) {  // 找到
 //				return i;
 //			}
 //		}
@@ -88,7 +88,7 @@
 //	void expand(int size)// 内部数组扩容接口
 //	{
 //		int* p = new int[size]; // 分配新内存
-//		memcpy(p, mpArr, sizeof(int) * mCap_); // 复制旧数组到新数组
+//		memcpy(p, mpArr, sizeof(int) * mCap_); // 复制旧数组到新数组 按字节复制
 //		delete[] mpArr; // 释放旧数组内存
 //
 //		mpArr = p; // 指向新数组
@@ -127,10 +127,10 @@
 //		arr.show();
 //	}*/
 //
-//	//int arr[10] = { 12,23,45,31,56,82,62 };
+//	///*int arr[10] = { 12,23,45,31,56,82,62 };
 //
 //	//for (int i = 0; i < 10; i++) {
-//	//	cout << arr[i] << " ";
+//	//	cout << arr[i] << " ";*/
 //
 //	//}
 //	//cout << endl;
