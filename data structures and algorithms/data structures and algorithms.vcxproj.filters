@@ -19,19 +19,28 @@
     <Filter Include="源文件\vector">
       <UniqueIdentifier>{36944f4b-ba0e-4ef2-ad16-f36d6b684fca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\数组">
+      <UniqueIdentifier>{a88d5b27-2171-41d7-9439-6b8ab610bdf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\数组\linked list">
+      <UniqueIdentifier>{319a4e5a-1915-48ee-b7dd-a25a0edc10d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="data structures and algorithms.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数组的增删改查.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="复盘.cpp">
       <Filter>复盘</Filter>
     </ClCompile>
     <ClCompile Include="vector.cpp">
       <Filter>源文件\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="data structures and algorithms.cpp">
+      <Filter>源文件\数组</Filter>
+    </ClCompile>
+    <ClCompile Include="数组的增删改查.cpp">
+      <Filter>源文件\数组</Filter>
+    </ClCompile>
+    <ClCompile Include="linked list.cpp">
+      <Filter>源文件\数组\linked list</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
