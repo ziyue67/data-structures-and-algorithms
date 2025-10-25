@@ -62,9 +62,9 @@
 //		for (int i = pos; i < mCur - 1; i++) {
 //			arr[i] = arr[i + 1];
 //		}
-//		mCur--; // 有效元素数-1
+//		--mCur; // 有效元素数-1
 //	}
-//
+//	
 //
 //	// 修正：删除函数（元素向前移动）
 //	void erase(int pos) {
@@ -127,7 +127,8 @@
 //	cout << "1. 头插100后：";
 //	arr.show();
 //
-//	arr.erase(0);
+//	//arr.erase(0);
+//	arr.erase_front(0);
 //	cout << "1. 删除第一个元素后：";
 //	arr.show();
 //

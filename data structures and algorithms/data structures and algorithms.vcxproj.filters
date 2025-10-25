@@ -16,6 +16,9 @@
     <Filter Include="复盘">
       <UniqueIdentifier>{6e6d918e-faeb-4df9-8f34-5285a695973c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\vector">
+      <UniqueIdentifier>{36944f4b-ba0e-4ef2-ad16-f36d6b684fca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="data structures and algorithms.cpp">
@@ -28,7 +31,7 @@
       <Filter>复盘</Filter>
     </ClCompile>
     <ClCompile Include="vector.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\vector</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
