@@ -5,7 +5,7 @@ using namespace std;
 
 
 //整形 数据 把偶数调整到数组的左边 ，奇数调整到数组的右边
-
+#if 0
 void Adjust(int arr[], int size) {
 	int* p = arr;
 	int* q = arr + size - 1;
@@ -66,7 +66,6 @@ void Adjust(int arr[], int size) {
 
 
 //逆序字符串
-#if 0
 void Reverse(char arr[], int size) {
 
 	char* p = arr;
@@ -81,16 +80,8 @@ void Reverse(char arr[], int size) {
 		q--;
 	}
 }
-#endif
 
 
-
-
-
-
-
-
-#if 0
 class Array {
 public:
 	Array(int size = 10) :mCap_(size), mCur(0) { // 构造函数
@@ -174,7 +165,7 @@ private:
 	int mCur; // 数组有效元素个数
 
 };
-#endif
+
 
 
 int main()
@@ -287,4 +278,4 @@ int main()
 
 	return 0;
 }
-
+#endif 
