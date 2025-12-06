@@ -3,7 +3,6 @@
 using namespace std;
 #include <time.h>
 
-
 //整形 数据 把偶数调整到数组的左边 ，奇数调整到数组的右边
 #if 0
 void Adjust(int arr[], int size) {
@@ -29,7 +28,6 @@ void Adjust(int arr[], int size) {
 		while (p < q && (*q & 0x1) == 1) {
 			q--;
 			continue;
-
 		}
 		/*while (p<q)
 		{
@@ -57,17 +55,11 @@ void Adjust(int arr[], int size) {
 			p++;
 			q--;
 		}
-
-
 	}
 }
 
-
-
-
 //逆序字符串
 void Reverse(char arr[], int size) {
-
 	char* p = arr;
 	char* q = arr + size - 1; // 指向最后一个元素
 
@@ -81,14 +73,13 @@ void Reverse(char arr[], int size) {
 	}
 }
 
-
 class Array {
 public:
 	Array(int size = 10) :mCap_(size), mCur(0) { // 构造函数
 		mpArr = new int[size]; // 动态分配数组
 	}
 	~Array() {
-		delete[] mpArr; // 释放内存 
+		delete[] mpArr; // 释放内存
 		mpArr = nullptr; // 防止悬空指针
 	}
 
@@ -157,20 +148,15 @@ private:
 
 		mpArr = p; // 指向新数组
 		mCap_ = size; // 更新容量
-
 	}
 private:
 	int* mpArr; // 指向动态分配的数组
 	int mCap_; // 容量
 	int mCur; // 数组有效元素个数
-
 };
-
-
 
 int main()
 {
-
 	int arr[10] = { 0 };
 	srand(time(0));
 	//int arr []= { 12,23,45,31,56,82,62 };
@@ -183,7 +169,6 @@ int main()
 		cout << v << " ";
 	}
 	cout << endl;
-
 
 	Adjust(arr, sizeof(arr) / sizeof(int));
 	for (int i = 0; i < sizeof(arr) / sizeof(int); i++) {
@@ -224,7 +209,6 @@ int main()
 		//}
 		//cout << endl;
 
-
 		//int valid_len = 7; // 已有7个元素
 		//int insert_pos = 3; // 要插在索引3的位置
 
@@ -255,15 +239,10 @@ int main()
 		//	}
 		//}
 
-
 		/*for (int i = 0; i < 10; i++) {
 			cout << arr[i] << " ";
-
 		}
 		cout << endl;*/
-
-
-
 
 		/* int* ptr = &arr[6];
 		 for (int i = 0; i < 7; i++) {
@@ -272,10 +251,6 @@ int main()
 		 }
 		 cout << endl;*/
 
-
-
-
-
 	return 0;
 }
-#endif 
+#endif

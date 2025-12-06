@@ -65,7 +65,6 @@ public:
 		}
 		--mCur; // 有效元素数-1
 	}
-	
 
 	// 修正：删除函数（元素向前移动）
 	void erase(int pos) {
