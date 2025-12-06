@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/data structures and algorithms/.vscode
+/data structures and algorithms/output
