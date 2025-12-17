@@ -52,4 +52,15 @@
       <Filter>源文件\链表</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ctoon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_hash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

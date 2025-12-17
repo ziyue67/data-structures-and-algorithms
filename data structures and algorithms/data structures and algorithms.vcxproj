@@ -28,6 +28,11 @@
     <ClCompile Include="复盘.cpp" />
     <ClCompile Include="数组的增删改查.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ctoon.h" />
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_hash.h" />
+    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_map.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -114,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

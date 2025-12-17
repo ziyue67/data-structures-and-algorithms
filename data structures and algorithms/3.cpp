@@ -91,8 +91,26 @@ public:
 	}
 private:
 	Node* head;
+	friend void verserList(ClinkedList &list);
 };
-
+void verserList(ClinkedList &list){
+	Node *head = list.head;
+	Node *p=head->next;
+	while (p==nullptr)
+	{
+		return;
+	}
+	head->next=nullptr;
+	while (p!=nullptr)
+	{
+		Node *q=p->next;
+		p->next=head->next;
+		head->next=p;
+		p=q;
+	}
+	
+	
+}
 
 int main() {
 	ClinkedList list;
@@ -114,6 +132,8 @@ int main() {
 	list.show();
 	list.insertTail(100);
 	cout << list.find(100) << endl;
+	verserList(list);
+	list.show();
 
 	return 0;
 }

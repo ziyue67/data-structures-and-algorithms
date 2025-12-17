@@ -181,7 +181,7 @@
 
 //     return 0;
 // }
-
+#if 0
 #include <iostream>
 using namespace std;
 struct Node
@@ -268,4 +268,146 @@ public:
     private:
         Node *head; // 链表头节点指针
     };
+#endif
+
+#include <iostream>
+using namespace std;
+struct Node
+{
+    int data;
+    Node *next;
+    Node(int data = 0) : data(data), next(nullptr) {}
+};
+
+class ClinkedList
+{
+public:
+    ClinkedList()
+    {
+        head = new Node();
+    }
+    ~ClinkedList()
+    {
+        Node *p = head;
+        while (p != nullptr)
+        {
+            head = p->next;
+            delete p;
+            p = head;
+        }
+        head = nullptr;
+    }
+    void insertTail(int val)
+    {
+        Node *p = head;
+        while (p->next!= nullptr)
+        {
+            p = p->next;
+        }
+        Node *node = new Node(val);
+        p->next = node;
+    }
+    void insertHead(int val)
+    {
+        Node *node = new Node(val);
+        node->next = head->next;
+        head->next = node;
+    }
+    void Remove(int val)
+    {
+        Node *p = head;
+        Node *q = head->next;
+        while (p != nullptr)
+        {
+            if (q->data == val)
+            {
+                p->next = q->next;
+                delete q;
+                return;
+            }
+            p = q;
+            q = q->next;
+        }
+    }
+    void RemoveAll(int val)
+    {
+        Node *p = head;
+        Node *q = head->next;
+        while (p != nullptr)
+        {
+            if (q->data == val)
+            {
+                p->next = q->next;
+                delete q;
+                q = p->next;
+            }
+            else
+            {
+                p = q;
+                q = p->next;
+            }
+        }
+    }
+    void find(int val)
+    {
+        Node *p = head->next;
+        while (p != nullptr)
+        {
+            if (p->data == val)
+            {
+                cout << "Found " << val << endl;
+                return;
+            }
+            p = p->next;
+        }
+        cout << val << " Not Found" << endl;
+    }
+    void show()
+    {
+        Node *p = head->next;
+        while (p != nullptr)
+        {
+            cout << p->data << " ";
+            p = p->next;
+        }
+        cout << endl;
+    }
+
+    friend void verserList(ClinkedList &list);
+
+private:
+    Node *head;
+};
+void verserList(ClinkedList &list)
+{
+    Node *head=list.head;
+    Node *p=head->next;
+    if(p==nullptr)
+    {
+        return;
+    }
+    head->next=nullptr;
+    while (p!=nullptr)
+    {
+        Node *q=p->next;
+        p->next=head->next;
+        head->next=p;
+        p=q;
+    }
+
     
+}
+
+int main()
+{
+    ClinkedList cl;
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < 10; i++)
+    {
+        cl.insertTail(rand() % 100);
+    }
+    cl.show();
+    verserList(cl);
+    cl.show();
+    return 0;
+}
