@@ -33,7 +33,7 @@ public:
  * 在链表末尾插入一个新节点
  * @param val 要插入的节点的值
  */
-	void insert(int val) { //链表尾插入 O(n)
+	void insertTail(int val) { //链表尾插入 O(n)
 		Node* p = head;
 		// 遍历链表直到找到最后一个节点
 		while (p->next != nullptr)
@@ -45,9 +45,13 @@ public:
 		p->next = node; //将新节点链接到链表末尾
 	}
 	void insertHead(int val) { //链表头插入 O(1)
-		Node* node = new Node(val); //创建新节点
+		Node* node = new Node(val); //创建新 节点
 		node->next = head->next; //新节点指向原头节点的下一个节点
 		head->next = node; //头节点指向新节点
+
+
+
+
 
 	}
 	void Remove(int val)
@@ -89,6 +93,23 @@ public:
 			}
 		}
 	}
+	void VeverseList() {
+		Node* head = this->head;
+		Node* p = head->next;
+		while (p == nullptr)
+		{
+			return;
+		}
+		head->next = nullptr;
+		while (p != nullptr)
+		{
+			Node* q = p->next;
+			p->next = head->next;
+			head->next = p;
+			p = q;
+		}
+	}
+
 	//搜索 函数，查找链表中是否存在值为 val 的节点 O(n)
 	bool  find(int val) {
 		Node* p = head->next; //从头节点的下一个节点开始遍历
@@ -119,8 +140,148 @@ public:
 private:
 	// 链表头节点指针
 	Node* head;
+	friend void mergeList(ClinkedList& list1, ClinkedList& list2);
+	friend	void reverseList(ClinkedList& list);
+	friend bool linkedList(ClinkedList& list, int k, int& val);
 };
+//单链表逆序
+void reverseList(ClinkedList& list) {
+	Node* head = list.head; //获取链表头节点指针
+	Node* p = head->next; //定义一个指针指向头节点的下一个节点
+	while (p == nullptr) //遍历链表
+	{
+		return; //链表为空，直接返回
+	}
+	head->next = nullptr; //将头节点的下一个节点置空
+	while (p != nullptr) //遍历链表
+	{
+		Node* q = p->next; //定义一个指针指向当前节点的下一个节点
+		p->next = head->next; //将当前节点的下一个节点指向头节点的下一个节点
+		head->next = p; //将头节点的下一个节点指向当前节点
 
+		p = q; //指针后移
+	}
+
+}
+//查找链表中倒数第k个节点
+bool linkedList(ClinkedList& list, int k, int& val) {
+	Node* head = list.head;
+	Node* per = head;
+	Node* p = head;
+
+
+	if (k <= 0) return false;
+	// 先移动p指针k步
+	for (int i = 0; i < k; i++) {
+		if (p == nullptr) return false;
+		p = p->next;
+	}
+
+	// 同时移动per和p直到p到达末尾
+	while (p != nullptr) {
+		per = per->next;
+		p = p->next;
+	}
+
+
+	val = per->data; //将倒数第k个节点的值赋给val
+	return true; // 返回true表示找到了倒数第k个节点
+}
+#if 0
+//合并二个有序链表的单链表
+void mergeList(ClinkedList& list1, ClinkedList& list2) {
+	Node* p = list1.head->next;
+	Node* q = list2.head->next;
+	Node* last = list1.head;
+	list2.head->next = nullptr;
+
+	while (p != nullptr && q != nullptr)
+	{
+		if (p->data < q->data) {
+			last->next = p;
+			p = p->next;
+			last = last->next;
+		}
+		else
+		{
+			last->next = q;
+			q = q->next;
+			last = last->next;
+		}
+	}
+	if (p != nullptr) {
+		last->next = p;
+
+	}
+	else
+	{
+		last->next = q;
+	}
+
+
+
+
+
+}
+
+
+
+int main() {
+	int arr[] = { 25,37,52,78,88,92,98,108 };
+	int brr[] = { 12,23,40 ,56,62,77,109 };
+	//int brr[] = { 12,23,45,67,89 };
+
+	ClinkedList list; //创建链表对象
+	ClinkedList list2;
+
+	for (int v : arr) {
+		list.insertTail(v);
+	}
+	for (int v : brr) {
+		list2.insertTail(v);
+	}
+	list.show();
+	list2.show();
+	mergeList(list, list2);//合并二个有序链表的单链表   如果题目要求第二个链表为空 第二个链表头节点置空
+	list.show();
+	list2.show();
+}
+#endif
+
+
+#if 0
+int main() {
+	ClinkedList list;
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < 10; i++) {
+		int val = rand() % 100;
+		list.insertTail(val);
+	}
+
+	cout << "原始链表：";
+	list.show();
+
+	reverseList(list);
+	cout << "逆序后链表：";
+	list.show();
+
+	int kavl;
+	int k = 3;
+	if (linkedList(list, k, kavl)) {
+		cout << "倒数第" << k << "个节点的值为" << kavl << endl;
+	}
+	else {
+		cout << "链表长度不足" << k << "个节点" << endl;
+	}
+
+	return 0;
+}
+#endif
+
+
+
+
+#if 0
 int main() {
 	ClinkedList list; //创建链表对象
 	srand((unsigned)time(NULL)); //设置随机数种子
@@ -141,8 +302,9 @@ int main() {
 	list.show();
 	list.RemoveAll(23);
 	list.show();
-	list.insertTail(100);
+	list.insert(100);
 	cout << list.find(100) << endl;
 	return 0;
 }
+#endif
 #endif

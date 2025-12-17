@@ -140,9 +140,12 @@ public:
 private:
 	// 链表头节点指针
 	Node* head;
+	friend void mergeList(ClinkedList& list1, ClinkedList& list2);
+	friend void mergeList1(ClinkedList& list1, ClinkedList& list2);
 	friend	void reverseList(ClinkedList& list);
 	friend bool linkedList(ClinkedList& list, int k, int& val);
 };
+//单链表逆序
 void reverseList(ClinkedList& list) {
 	Node* head = list.head; //获取链表头节点指针
 	Node* p = head->next; //定义一个指针指向头节点的下一个节点
@@ -161,6 +164,7 @@ void reverseList(ClinkedList& list) {
 	}
 
 }
+//查找链表中倒数第k个节点
 bool linkedList(ClinkedList& list, int k, int& val) {
 	Node* head = list.head;
 	Node* per = head;
@@ -181,10 +185,125 @@ bool linkedList(ClinkedList& list, int k, int& val) {
 	}
 
 
-	val = per->data;
-	return true;
+	val = per->data; //将倒数第k个节点的值赋给val
+	return true; // 返回true表示找到了倒数第k个节点
+}
+//合并二个有序链表的单链表 从小到大
+void mergeList(ClinkedList& list1, ClinkedList& list2) {
+	Node* p = list1.head->next;
+	Node* q = list2.head->next;
+	Node* last = list1.head;
+	list2.head->next = nullptr;
+
+	while (p != nullptr && q != nullptr)
+	{
+		if (p->data < q->data) { // 修改比较条件：从 > 改为 <
+			last->next = p;
+			p = p->next;
+			last = last->next;
+		}
+		else
+		{
+			last->next = q;
+			q = q->next;
+			last = last->next;
+		}
+	}
+	if (p != nullptr) {
+		last->next = p;
+
+	}
+	else
+	{
+		last->next = q;
+	}
+
+
+
+
+
+}
+//合并二个有序链表的单链表 从大到小
+void mergeList1(ClinkedList& list1, ClinkedList& list2) {
+	Node* p = list1.head->next;
+	Node* q = list2.head->next;
+	Node* last = list1.head;
+	list2.head->next = nullptr;
+
+	while (p != nullptr && q != nullptr)
+	{
+		if (p->data > q->data) {  // 修改比较条件：从 < 改为 >
+			last->next = p;
+			p = p->next;
+			last = last->next;
+		}
+		else
+		{
+			last->next = q;
+			q = q->next;
+			last = last->next;
+		}
+	}
+	if (p != nullptr) {
+		last->next = p;
+	}
+	else
+	{
+		last->next = q;
+	}
 }
 
+
+
+
+int main() {
+	// 测试从小到大合并
+	int arr[] = { 25,37,52,78,88,92,98,108 };
+	int brr[] = { 12,23,40 ,56,62,77,109 };
+
+	ClinkedList list;
+	ClinkedList list2;
+
+	for (int v : arr) {
+		list.insertTail(v);
+	}
+	for (int v : brr) {
+		list2.insertTail(v);
+	}
+
+	cout << "原始链表1: ";
+	list.show();
+	cout << "原始链表2: ";
+	list2.show();
+
+	// 从小到大合并
+	mergeList(list, list2);
+	cout << "从小到大合并后: ";
+	list.show();
+
+	// 重新创建数据测试从大到小合并
+	int arr2[] = { 25,37,52,78,88,92,98,108 };
+	int brr2[] = { 12,23,40 ,56,62,77,109 };
+
+	ClinkedList list3;
+	ClinkedList list4;
+
+	for (int v : arr2) {
+		list3.insertTail(v);
+	}
+	for (int v : brr2) {
+		list4.insertTail(v);
+	}
+
+	// 从大到小合并
+	mergeList1(list3, list4);
+	cout << "从大到小合并后: ";
+	list3.show();
+}
+
+
+
+#if 0
 int main() {
 	ClinkedList list;
 	srand((unsigned)time(NULL));
@@ -211,7 +330,7 @@ int main() {
 
 	return 0;
 }
-
+#endif
 
 
 
