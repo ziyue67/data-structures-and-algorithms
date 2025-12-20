@@ -8,21 +8,28 @@ This is a C++ learning project for data structures and algorithms implementation
 
 ## Build and Development Environment
 
-- **Compiler**: Visual Studio 2026 or compatible C++ development environment
-- **Language**: C++ (with Chinese comments for educational purposes)
-- **No Makefile**: Uses Visual Studio project files (.sln, .vcxproj) for building
+- **Compiler**: Visual Studio 2022/2026 or compatible C++ development environment
+- **Language**: C++20 (primary), with C++11 support for some configurations
+- **Project Format**: Visual Studio solution (.slnx) and project files (.vcxproj)
+- **Platforms**: Supports both Win32 (x86) and x64 architectures
+- **External Dependencies**: Ctoon library (optional, referenced but not required for core functionality)
 
 ### Common Commands
 
 ```bash
-# Compile and run the main implementation
-g++ -std=c++11 "data structures and algorithms.cpp" -o main && ./main
+# Compile and run the main implementation (g++)
+g++ -std=c++20 "data structures and algorithms/data structures and algorithms.cpp" -o main && ./main
 
 # Compile individual files for testing
-g++ -std=c++11 "data structures and algorithms/linked list.cpp" -o linked_list && ./linked_list
+g++ -std=c++20 "data structures and algorithms/linked list.cpp" -o linked_list && ./linked_list
+g++ -std=c++20 "data structures and algorithms/数组的增删改查.cpp" -o array_ops && ./array_ops
 
 # Run with Visual Studio
-# Open the solution file and use F5 to build and run
+# Open "data structures and algorithms.slnx" and use F5 to build and run
+# Build configurations available: Debug/Release for both Win32 and x64
+
+# Build with CMake (for ctoon example, when ctoon library is available)
+cd ctoon_example && cmake -B build && cmake --build build
 ```
 
 ## Code Architecture
@@ -53,11 +60,15 @@ g++ -std=c++11 "data structures and algorithms/linked list.cpp" -o linked_list &
 
 ### Key Files
 
-- `data structures and algorithms.cpp`: Main file with array operations and dynamic array class
-- `linked list.cpp`: Complete linked list implementation with friend functions
-- `vector.cpp`: Template-based vector implementation (educational)
-- `数组的增删改查.cpp`: Basic array CRUD operations
-- `单链表逆序.cpp`: Linked list reversal exercises
+- `data structures and algorithms/data structures and algorithms.cpp`: Main file with array operations and dynamic array class
+- `data structures and algorithms/linked list.cpp`: Complete linked list implementation with friend functions
+- `data structures and algorithms/vector.cpp`: Template-based vector implementation (educational, commented out)
+- `data structures and algorithms/数组的增删改查.cpp`: Basic array CRUD operations in Chinese
+- `data structures and algorithms/单链表逆序.cpp`: Linked list reversal exercises
+- `data structures and algorithms/复盘.cpp`: Review and summary exercises
+- `data structures and algorithms/[1-3].cpp`: Additional coding exercise files
+- `data structures and algorithms.slnx`: Visual Studio solution file
+- `ctoon_example/CMakeLists.txt`: CMake example for optional ctoon library integration
 
 ## Development Guidelines
 
@@ -78,6 +89,15 @@ g++ -std=c++11 "data structures and algorithms/linked list.cpp" -o linked_list &
 
 When adding new data structures or algorithms:
 1. Create a new .cpp file in the `data structures and algorithms/` directory
-2. Follow the existing pattern with clear Chinese comments
-3. Include comprehensive test cases in main()
-4. Use conditional compilation for different test scenarios
+2. Follow the existing pattern with clear Chinese comments for educational purposes
+3. Include comprehensive test cases in main() using conditional compilation (`#if 0`/`#if 1`)
+4. Add the new file to the Visual Studio project file (.vcxproj) if using IDE builds
+5. Use consistent naming conventions (prefer Chinese filenames for educational content)
+
+### Project Structure Notes
+
+- **Source Organization**: All main implementation files are in the `data structures and algorithms/` subdirectory
+- **Bilingual Content**: Mix of English and Chinese ( filenames and comments for learning purposes)
+- **Optional Dependencies**: Ctoon library headers are referenced but not required for core functionality
+- **Multi-platform**: While primarily designed for Windows/Visual Studio, can be compiled with g++ on other platforms
+- **Educational Focus**: Code emphasizes clarity and learning over performance optimization

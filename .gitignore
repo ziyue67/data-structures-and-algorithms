@@ -363,3 +363,9 @@ MigrationBackup/
 FodyWeavers.xsd
 /data structures and algorithms/.vscode
 /data structures and algorithms/output
+data structures and algorithms/test.exe
+data structures and algorithms/linked_list_test.exe
+data structures and algorithms/test_circle.exe
+data structures and algorithms/circle_test.exe
+data structures and algorithms/单链表逆序.o
+data structures and algorithms/单链表逆序.o

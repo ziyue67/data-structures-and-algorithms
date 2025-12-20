@@ -374,7 +374,9 @@ public:
     }
 
     friend void verserList(ClinkedList &list);
-
+    friend bool linkedList(ClinkedList &list, int k, int &val);
+    friend void mergeList(ClinkedList &list1, ClinkedList &list2);
+    friend bool IsLinkHasCircle(Node *head, int &val);
 private:
     Node *head;
 };
@@ -382,11 +384,12 @@ void verserList(ClinkedList &list)
 {
     Node *head=list.head;
     Node *p=head->next;
-    if(p==nullptr)
+    while (p==nullptr)
     {
         return;
     }
     head->next=nullptr;
+    
     while (p!=nullptr)
     {
         Node *q=p->next;
@@ -394,11 +397,75 @@ void verserList(ClinkedList &list)
         head->next=p;
         p=q;
     }
-
     
 }
+bool linkedList(ClinkedList &list, int k, int &val){
+    Node *head=list.head;
+    Node *per=head;
+    Node*p=head;
+    if(k<0)return false;
+    for (int  i = 0; i <k; i++)
+    {
+       if(p==nullptr){
+        return false;
+       }
+       p=p->next;
+    }
+    while (p!=nullptr)
+    {
+        per=per->next;
+    }   p=p->next;
+    val=per->data;
+    return true;
+}
+void mergeList(ClinkedList &list1, ClinkedList &list2) {
+    Node *p=list1.head->next;
+    Node *q=list2.head->next;
+    Node *last=list1.head;
+    list2.head->next=nullptr;
+    while(p!=nullptr &&q!=nullptr){
+        if(p->data<q->data){
+            last->next=p;
+            p=p->next;
+            last=last->next;
+        }
+        else{
+            last->next=q;
+            q=q->next;
+            last=last->next;
+        }
+    }
+    if(p!=nullptr){
+        last->next=p;
+    }
+    else
+    {
+        last->next=q;
+    }
+}
+bool IsLinkHasCircle(Node *head, int &val){
+    Node *fast=head;
+    Node *slow=head;
+    while (fast &&fast->next)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+        if(slow==fast){
+            slow=head;
+            while (slow!=fast)
+            {
+                slow=slow->next;
+                fast=fast->next;
+                
+            }
+            val=slow->data;
+            return true;
+        }
+    }
+    return false;
+}
 
-int main()
+    int main()
 {
     ClinkedList cl;
     srand((unsigned)time(NULL));

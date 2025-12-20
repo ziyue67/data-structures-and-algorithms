@@ -68,7 +68,6 @@ public:
 				q = p;
 				p = p->next;
 			}
-
 		}
 	}
 	bool find(int val) {
@@ -91,25 +90,23 @@ public:
 	}
 private:
 	Node* head;
-	friend void verserList(ClinkedList &list);
+	friend void verserList(ClinkedList& list);
 };
-void verserList(ClinkedList &list){
-	Node *head = list.head;
-	Node *p=head->next;
-	while (p==nullptr)
+void verserList(ClinkedList& list) {
+	Node* head = list.head;
+	Node* p = head->next;
+	while (p == nullptr)
 	{
 		return;
 	}
-	head->next=nullptr;
-	while (p!=nullptr)
+	head->next = nullptr;
+	while (p != nullptr)
 	{
-		Node *q=p->next;
-		p->next=head->next;
-		head->next=p;
-		p=q;
+		Node* q = p->next;
+		p->next = head->next;
+		head->next = p;
+		p = q;
 	}
-	
-	
 }
 
 int main() {
@@ -117,7 +114,6 @@ int main() {
 	srand((unsigned)time(NULL));
 	for (int i = 0; i < 10; i++) {
 		list.insertTail(rand() % 100);
-
 	}
 	list.show();
 	list.intsertHead(100);
