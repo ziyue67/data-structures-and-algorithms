@@ -24,14 +24,10 @@
     <ClCompile Include="data structures and algorithms.cpp" />
     <ClCompile Include="linked list.cpp" />
     <ClCompile Include="vector.cpp" />
+    <ClCompile Include="单链表循环.cpp" />
     <ClCompile Include="单链表逆序.cpp" />
     <ClCompile Include="复盘.cpp" />
     <ClCompile Include="数组的增删改查.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ctoon.h" />
-    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_hash.h" />
-    <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ordered_map.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
@@ -57,7 +53,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#if 0
+#include <iostream>
 using namespace std;
 
 struct Node // 定义链表节点
@@ -502,4 +503,5 @@ int main() {
 	cout << list.find(100) << endl;
 	return 0;
 }
+#endif
 #endif
