@@ -3,9 +3,9 @@
 #include <cstring> // memcpy需要包含此头文件（避免编译器警告）
 using namespace std;
 #include <time.h>
-//#if 0
-//class Array {
-//public:
+// #if 0
+// class Array {
+// public:
 //	Array(int size = 10) :size(size), mcur(0) {
 //		arr = new int[size];
 //	}
@@ -66,7 +66,7 @@ using namespace std;
 //	}
 //
 //
-//private:
+// private:
 //	void expand(int newsize) {
 //		int* p = new int[newsize];
 //		memcpy(p, arr, sizeof(int) * mcur);
@@ -75,14 +75,14 @@ using namespace std;
 //		arr = p;
 //		size = newsize;
 //	}
-//private:
+// private:
 //	int* arr;
 //	int size;
 //	int mcur;
-//};
-//#endif
-//#if 0
-//void Revase(char  arr[], int size) {
+// };
+// #endif
+// #if 0
+// void Revase(char  arr[], int size) {
 //
 //	char* p = arr;
 //	char* q = arr + size - 1;
@@ -96,19 +96,19 @@ using namespace std;
 //		q--;
 //	}
 //
-//}
+// }
 //
 //
 //
 //
-//int main() {
+// int main() {
 //
 //	char arr[] = "abcdefg";
 //	Revase(arr, strlen(arr));
 //	cout << arr << endl;
 //
 //
-//#if 0
+// #if 0
 //	Array arr;
 //	srand(time(0));
 //
@@ -128,15 +128,15 @@ using namespace std;
 //		arr.erase(pos);
 //		arr.show();
 //	}
-//#endif
+// #endif
 //
 //	return 0;
 //
-//}
-//#endif
+// }
+// #endif
 
-//class Array {
-//public:
+// class Array {
+// public:
 //	Array(int size = 10) :size(size), mcap(0) {
 //		arr = new int[size];
 //	}
@@ -169,7 +169,7 @@ using namespace std;
 //	}
 //	void  erase(int pos) {
 //		if(pos < 0 || pos >= mcap) {
-// 			return;}
+//  			return;}
 //
 //		for (int i = pos+1; i < mcap; i++) {
 //			arr[i] = arr[i - 1];
@@ -193,7 +193,7 @@ using namespace std;
 //		}
 //		cout << endl;
 //	}
-//private:
+// private:
 //	void expan(int newsize) {
 //		int* p = new int[newsize];
 //		memcpy(p, arr, sizeof(int) * mcap);
@@ -201,19 +201,19 @@ using namespace std;
 //		arr = p;
 //		size = newsize;
 //	}
-//private:
+// private:
 //	int* arr;
 //	int size;
 //	int mcap;
 //
 //
-//};
+// };
 //
 //
 //
 //
 //
-//int main() {
+// int main() {
 //	Array arr;
 //	srand(time(0));
 //
@@ -235,4 +235,179 @@ using namespace std;
 //
 //
 //	return 0;
-//}
+// }
+// 双指针法
+
+//整型数组 把偶数放在左边 奇数放在右边
+void swap(int arr[],int size){
+    int *p=arr;
+    int *q=arr+size-1;
+    while (p<q)
+    {
+        while(p<q && *p%2==0){
+            p++;
+        }
+        while (q>p && *q%2==1)
+        {
+            q--;
+        }
+        if(p<q){
+            int ch =*p;
+            *p=*q;
+            *q=ch;
+            p++;
+            q--;
+        }
+
+        
+    }
+    
+}
+int main(){
+    int arr[]={1,2,3,4,5,6,7,8,9,10};
+    swap(arr,10);
+    for (int i = 0; i < 10; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    return 0;
+}
+
+
+
+void Revase(char arr1[], int size)
+{
+    char *p = arr1;
+    char *q = arr1 + size - 1;
+    while (p < q)
+    {
+        char ch = *q;
+        *q = *p;
+        *p = ch;
+        p++;
+        q--;
+    }
+}
+
+
+class Array
+{
+public:
+    Array(int size = 10) : size(size), mcap(0)
+    {
+        arr = new int[size];
+    };
+    ~Array()
+    {
+        delete[] arr;
+        arr = nullptr;
+    }
+    void push_back(int val)
+    {
+        if (mcap == size)
+        {
+            expand(2 * size);
+        }
+        arr[mcap++] = val;
+    }
+    void pop_back()
+    {
+        if (mcap == 0)
+        {
+            return;
+        }
+        mcap--;
+    }
+    void insert(int pos, int val)
+    {
+        if (mcap == size)
+        {
+            expand(2 * size);
+        }
+        for (int i = mcap - 1; i > pos; i--)
+        {
+            arr[i] = arr[i - 1];
+        }
+        arr[pos] = val;
+        mcap++;
+    }
+    void erase(int pos)
+    {
+        if (pos < 0 || pos >= mcap)
+        {
+            return;
+        }
+        for (int i = pos; i < mcap - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+        mcap--;
+    }
+    int find(int val)
+    {
+        if (mcap == 0)
+        {
+            return -1;
+        }
+
+        for (int i = 0; i < mcap; i++)
+        {
+            if (arr[i] == val)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    void show()
+    {
+        for (int i = 0; i < mcap; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+
+private:
+    void expand(int newsize)
+    {
+        int *p = new int[newsize];
+        memcpy(p, arr, sizeof(int) * mcap);
+        delete[] arr;
+        arr = p;
+        size = newsize;
+    }
+    int *arr;
+    int size;
+    int mcap;
+};
+#if 0
+int main()
+{
+    Array arr;
+    srand(time(0));
+    for (int i = 0; i < 10; i++)
+    {
+        arr.push_back(rand() % 100);
+    }
+    arr.show();
+    arr.push_back(100);
+    arr.show();
+    arr.pop_back();
+    arr.show();
+    arr.insert(10, 200);
+    arr.show();
+    int pos = arr.find(200);
+    if (pos != -1)
+    {
+        arr.erase(pos);
+        arr.show();
+    }
+    char arr1[] = "hello world";
+    Revase(arr1, 11);
+    cout << arr1 << endl;
+
+    return 0;
+}
+#endif
