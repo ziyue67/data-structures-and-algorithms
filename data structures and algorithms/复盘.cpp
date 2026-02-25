@@ -239,29 +239,52 @@ using namespace std;
 // 双指针法
 
 //整型数组 把偶数放在左边 奇数放在右边
-void swap(int arr[],int size){
-    int *p=arr;
-    int *q=arr+size-1;
-    while (p<q)
-    {
-        while(p<q && *p%2==0){
+// void swap(int arr[],int size){
+//     int *p=arr;
+//     int *q=arr+size-1;
+//     while (p<q)
+//     {
+//         while(p<q && *p%2==0){
+//             p++;
+//         }
+//         while (q>p && *q%2==1)
+//         {
+//             q--;
+//         }
+//         if(p<q){
+//             int ch =*p;
+//             *p=*q;
+//             *q=ch;
+//             p++;
+//             q--;
+//         }
+
+        
+//     }
+    
+// }
+
+void swap(int arr[], int size){
+     int *p = arr;
+     int *q = arr + size - 1;
+     while (p < q){
+        while (p < q && (*p & 0x01) == 0)
+        {
             p++;
         }
-        while (q>p && *q%2==1)
+        while (p < q && (*q & 0x01) == 1)
         {
             q--;
         }
-        if(p<q){
-            int ch =*p;
-            *p=*q;
-            *q=ch;
+        if (p < q)
+        {
+            int ch = *p;
+            *p = *q;
+            *q = ch;
             p++;
             q--;
         }
-
-        
-    }
-    
+     }
 }
 int main(){
     int arr[]={1,2,3,4,5,6,7,8,9,10};

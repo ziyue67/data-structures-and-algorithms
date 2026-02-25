@@ -1,5 +1,5 @@
-﻿// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
 // struct Node
 // {
@@ -45,7 +45,7 @@
 //      *
 //      * @param val 要插入的节点的值
 //      */
-//     void insert(int val)
+//     void insertTailHeadTail(int val)
 //     {
 //         Node *p = head;
 //         while (p->next != nullptr) // 遍历到链表末尾
@@ -161,10 +161,10 @@
 //     for (int i = 0; i < 10; i++)
 //     {
 //         int val = rand() % 100;
-//         cl.insert(val);
+//         cl.insertTailHeadTail(val);
 //     }
 //     cl.show();
-//     cl.insert(100);
+//     cl.insertTailHeadTail(100);
 //     cl.show();
 //     cl.Remove(100);
 //     cl.show();
@@ -175,7 +175,7 @@
 //     cl.show();
 //     cl.RemoveAll(50);
 //     cl.show();
-//     cl.insert(25);
+//     cl.insertTailHeadTail(25);
 //     cl.show();
 //     cl.find(25) ? cout << "Found 25" << endl : cout << "25 Not Found" << endl;
 
@@ -213,7 +213,7 @@ public:
         }
         head = nullptr;
     }
-    void insertTail(int val)
+    void insertTailHeadTailTail(int val)
     {
         Node *p = head;
         while (p->next != nullptr)
@@ -223,7 +223,7 @@ public:
         Node *node = new Node(val);
         p->next = node;
     }
-    void insertHead(int val)
+    void insertTailHeadTailHead(int val)
     {
         Node *node = new Node(val);
         node->next = head->next;
@@ -270,6 +270,7 @@ public:
     };
 #endif
 
+#if 0
 #include <iostream>
 using namespace std;
 struct Node
@@ -297,7 +298,7 @@ public:
         }
         head = nullptr;
     }
-    void insertTail(int val)
+    void insertTailHeadTailTail(int val)
     {
         Node *p = head;
         while (p->next!= nullptr)
@@ -307,7 +308,7 @@ public:
         Node *node = new Node(val);
         p->next = node;
     }
-    void insertHead(int val)
+    void insertTailHeadTailHead(int val)
     {
         Node *node = new Node(val);
         node->next = head->next;
@@ -465,17 +466,140 @@ bool IsLinkHasCircle(Node *head, int &val){
     }
     return false;
 }
-
+#endif
+#if 0
     int main()
 {
     ClinkedList cl;
     srand((unsigned)time(NULL));
     for (int i = 0; i < 10; i++)
     {
-        cl.insertTail(rand() % 100);
+        cl.insertTailHeadTailTail(rand() % 100);
     }
     cl.show();
     verserList(cl);
     cl.show();
     return 0;
+}
+#endif
+
+// 单链表
+struct Node
+{
+    Node(int val=0):data(val),next(nullptr){}
+    int data;
+    Node *next;
+}; 
+class ClinkedList
+{
+public:
+    ClinkedList()
+    {
+        head = new Node();
+        head->next = nullptr;
+    }
+    ~ClinkedList()
+    {
+        Node *p = head->next;
+        while (p != nullptr)
+        {
+            Node *q = p->next;   
+            delete p;
+            p = q;
+        }
+    }
+    void insertTailHeadTailTail(int val){
+        Node *p=head;
+        while (p->next !=nullptr)
+        {
+           p=p->next;
+        }
+        Node *node=new Node(val);  //创建新节点
+        p->next=node; //将新节点插入到链表尾部
+        node->next=nullptr; //将新节点的next置为空 
+    }
+    void insertTailHeadTailHead(int val){
+        Node *node  =new Node(val);
+        node->next=head->next;
+        head->next=node;
+    }
+    void Remove(int val){
+        Node *p=head;
+        Node *q=head->next;
+        while(q!=nullptr){
+            if(q->data==val){
+                p->next=q->next;
+                delete q;
+                q=p->next;
+            }
+            else{
+                p=q;
+                q=q->next;
+            }
+        }
+    }
+    void RemoveAll(int val){
+        Node *p=head;
+        Node *q=head->next;
+        while (q!=nullptr)
+        {
+            if(q->data==val){
+                p->next=q->next;
+                delete q;
+                q=p->next;
+            }
+            else{
+                p=q;
+                q=q->next;
+            }
+
+        }
+        
+    }
+    bool find(int val){
+        Node *p=head->next;
+        while (p!=nullptr)
+        {
+            if(p->data==val){
+                return true;
+            }
+            p=p->next;
+        }
+        return false;
+    }
+    void show(){
+        Node*p=head->next;
+        while (p!=nullptr)
+        {
+            cout << p->data << " ";
+            p=p->next;
+        }
+        cout << endl;
+    }
+private:
+    Node *head;
+};
+int main() {
+	ClinkedList list; //创建链表对象
+	srand((unsigned)time(NULL)); //设置随机数种子
+	for (int i = 0; i < 10; i++) {
+		int val = rand() % 100; //生成0-99之间的随机数
+		list.insertTailHeadTailTail(val); //在链表末尾插入新节点
+	}
+	list.show(); //打印链表内容
+	list.insertTailHeadTailTail(50);
+	list.show();
+
+	list.Remove(50);
+	list.show();
+	list.insertTailHeadTailHead(23);
+	list.insertTailHeadTailHead(23);
+	list.insertTailHeadTailHead(23);
+	list.insertTailHeadTailTail(23);
+	list.show();
+	list.RemoveAll(23);
+	list.show();
+    list.insertTailHeadTailTail(100);
+    cout << (list.find(100) ? "Found 100" : "Not Found 100") << endl;
+	return 0;
 }
