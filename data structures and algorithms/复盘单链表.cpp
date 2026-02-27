@@ -486,10 +486,10 @@ bool IsLinkHasCircle(Node *head, int &val){
 // 单链表
 struct Node
 {
-    Node(int val=0):data(val),next(nullptr){}
+    Node(int val = 0) : data(val), next(nullptr) {}
     int data;
     Node *next;
-}; 
+};
 class ClinkedList
 {
 public:
@@ -503,82 +503,94 @@ public:
         Node *p = head->next;
         while (p != nullptr)
         {
-            Node *q = p->next;   
+            Node *q = p->next;
             delete p;
             p = q;
         }
     }
-    void insertTailHeadTailTail(int val){
-        Node *p=head;
-        while (p->next !=nullptr)
+    void insertTailHeadTailTail(int val)
+    {
+        Node *p = head;
+        while (p->next != nullptr)
         {
-           p=p->next;
+            p = p->next;
         }
-        Node *node=new Node(val);  //创建新节点
-        p->next=node; //将新节点插入到链表尾部
-        node->next=nullptr; //将新节点的next置为空 
+        Node *node = new Node(val); // 创建新节点
+        p->next = node;             // 将新节点插入到链表尾部
+        node->next = nullptr;       // 将新节点的next置为空
     }
-    void insertTailHeadTailHead(int val){
-        Node *node  =new Node(val);
-        node->next=head->next;
-        head->next=node;
+    void insertTailHeadTailHead(int val)
+    {
+        Node *node = new Node(val);
+        node->next = head->next;
+        head->next = node;
     }
-    void Remove(int val){
-        Node *p=head;
-        Node *q=head->next;
-        while(q!=nullptr){
-            if(q->data==val){
-                p->next=q->next;
+    void Remove(int val)
+    {
+        Node *p = head;
+        Node *q = head->next;
+        while (q != nullptr)
+        {
+            if (q->data == val)
+            {
+                p->next = q->next;
                 delete q;
-                q=p->next;
+                q = p->next;
             }
-            else{
-                p=q;
-                q=q->next;
+            else
+            {
+                p = q;
+                q = q->next;
             }
         }
     }
-    void RemoveAll(int val){
-        Node *p=head;
-        Node *q=head->next;
-        while (q!=nullptr)
+    void RemoveAll(int val)
+    {
+        Node *p = head;
+        Node *q = head->next;
+        while (q != nullptr)
         {
-            if(q->data==val){
-                p->next=q->next;
+            if (q->data == val)
+            {
+                p->next = q->next;
                 delete q;
-                q=p->next;
+                q = p->next;
             }
-            else{
-                p=q;
-                q=q->next;
+            else
+            {
+                p = q;
+                q = q->next;
             }
-
         }
-        
     }
-    bool find(int val){
-        Node *p=head->next;
-        while (p!=nullptr)
+    bool find(int val)
+    {
+        Node *p = head->next;
+        while (p != nullptr)
         {
-            if(p->data==val){
+            if (p->data == val)
+            {
                 return true;
             }
-            p=p->next;
+            p = p->next;
         }
         return false;
     }
-    void show(){
-        Node*p=head->next;
-        while (p!=nullptr)
+    void show()
+    {
+        Node *p = head->next;
+        while (p != nullptr)
         {
             cout << p->data << " ";
-            p=p->next;
+            p = p->next;
         }
         cout << endl;
     }
-private:
+
+public:
     Node *head;
 };
+#if 0
 int main() {
 	ClinkedList list; //创建链表对象
 	srand((unsigned)time(NULL)); //设置随机数种子
@@ -602,4 +614,97 @@ int main() {
     list.insertTailHeadTailTail(100);
     cout << (list.find(100) ? "Found 100" : "Not Found 100") << endl;
 	return 0;
+}
+#endif
+
+// 单链表逆序
+void VerserList(ClinkedList &list)
+{
+    Node *prev = nullptr;
+    Node *curr = list.head->next;
+    while (curr != nullptr)
+    {
+        Node *temp=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=temp;
+    }
+    list.head->next=prev;
+        
+
+}
+// 反转、合并、环检测
+void MergeList(ClinkedList &list1, ClinkedList &list2){
+    Node *p=list1.head->next;
+    Node *q=list2.head->next;
+    Node *last=list1.head;
+    list1.head->next=nullptr;
+    list2.head->next=nullptr;
+    while(p!=nullptr &&q!=nullptr){
+        if(p->data<q->data){
+            last->next=p;
+            p=p->next;
+            last=last->next;
+            last->next=nullptr;
+        }
+        else{
+            last->next=q;
+            q=q->next;
+            last=last->next;
+            last->next=nullptr;
+        }
+    }
+    if(p!=nullptr){last->next=p;}
+    if(q!=nullptr){last->next=q;}
+}
+bool HasCycle(ClinkedList &list){
+    Node *fast=list.head->next;
+    Node *slow=list.head->next;
+    while(fast!=nullptr &&fast->next!=nullptr){
+        slow=slow->next;
+        fast=fast->next->next;
+        if(slow==fast){
+            return true;    
+        }
+    }
+    return false;
+}
+int main()
+{
+    ClinkedList lsit;
+    for (int i = 0; i < 10; i++)
+    {
+        lsit.insertTailHeadTailTail(rand() % 100);
+    }
+    lsit.show();
+    VerserList(lsit);
+    lsit.show();
+
+    // 合并测试（构造两个有序链表）
+    ClinkedList a, b;
+    for (int i = 1; i <= 5; ++i)
+        a.insertTailHeadTailTail(i * 2); // 2,4,6,8,10
+    for (int i = 1; i <= 5; ++i)
+        b.insertTailHeadTailTail(i * 2 + 1); // 3,5,7,9,11
+    a.show();
+    b.show();
+    MergeList(a, b);
+    a.show();
+
+    // 环检测测试（在lsit上人工制造环，指向第2个元素作为入口）
+    Node *tail = lsit.head;
+    while (tail->next != nullptr)
+        tail = tail->next;
+    Node *entry = lsit.head->next;
+    if (entry && entry->next)
+        entry = entry->next; // 指向第2个元素
+    tail->next = entry;      // 构造环
+
+    int entryVal = -1;
+    if ((lsit.head, entryVal))
+        cout << "Found cycle entry value: " << entryVal << endl;
+    else
+        cout << "No cycle" << endl;
+
+    return 0;
 }
