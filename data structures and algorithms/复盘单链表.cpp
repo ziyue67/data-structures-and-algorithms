@@ -618,53 +618,61 @@ int main() {
 #endif
 
 // 单链表逆序
-void VerserList(ClinkedList &list)
-{
+void  VerserList(ClinkedList &list){
     Node *prev = nullptr;
-    Node *curr = list.head->next;
-    while (curr != nullptr)
-    {
-        Node *temp=curr->next;
+    Node *curr= list.head->next;
+    while(curr!=nullptr){
+        Node *next=curr->next;
         curr->next=prev;
         prev=curr;
-        curr=temp;
+        curr=next;
     }
-    list.head->next=prev;
-        
-
 }
 // 反转、合并、环检测
-void MergeList(ClinkedList &list1, ClinkedList &list2){
-    Node *p=list1.head->next;
-    Node *q=list2.head->next;
-    Node *last=list1.head;
-    list1.head->next=nullptr;
-    list2.head->next=nullptr;
-    while(p!=nullptr &&q!=nullptr){
-        if(p->data<q->data){
-            last->next=p;
-            p=p->next;
-            last=last->next;
-            last->next=nullptr;
+void MergeList(ClinkedList &list1, ClinkedList &list2)
+{
+    Node *p = list1.head->next;
+    Node *q = list2.head->next;
+    Node *last = list1.head;
+    list1.head->next = nullptr;
+    list2.head->next = nullptr;
+    while (p != nullptr && q != nullptr)
+    {
+        if (p->data < q->data)
+        {
+            last->next = p;
+            p = p->next;
+            last = last->next;
+            last->next = nullptr;
         }
-        else{
-            last->next=q;
-            q=q->next;
-            last=last->next;
-            last->next=nullptr;
+        else
+        {
+            last->next = q;
+            q = q->next;
+            last = last->next;
+            last->next = nullptr;
         }
     }
-    if(p!=nullptr){last->next=p;}
-    if(q!=nullptr){last->next=q;}
+    if (p != nullptr)
+    {
+        last->next = p;
+    }
+    if (q != nullptr)
+    {
+        last->next = q;
+    }
 }
-bool HasCycle(ClinkedList &list){
-    Node *fast=list.head->next;
-    Node *slow=list.head->next;
-    while(fast!=nullptr &&fast->next!=nullptr){
-        slow=slow->next;
-        fast=fast->next->next;
-        if(slow==fast){
-            return true;    
+bool HasCycle(ClinkedList &list)
+{
+    Node *fast = list.head->next;
+    Node *slow = list.head->next;
+    while (fast != nullptr && fast->next != nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast)
+        {
+            return true;
         }
     }
     return false;
@@ -708,3 +716,63 @@ int main()
 
     return 0;
 }
+
+bool IsSame(ClinkedList &list1, ClinkedList &list2, int &val)
+{
+    Node *p = list1.head->next;
+    Node *q = list2.head->next;
+
+    // 计算长度
+    int len1 = 0, len2 = 0;
+    for (Node *t = p; t; t = t->next)
+        len1++;
+    for (Node *t = q; t; t = t->next)
+        len2++;
+
+    // 对齐：让长的链表先跳过差值个节点
+    int diff = len1 > len2 ? len1 - len2 : len2 - len1;
+    if (len1 > len2)
+        while (diff--)
+            p = p->next;
+    else
+        while (diff--)
+            q = q->next;
+
+    // 找到第一个相同值的节点
+    while (p && q)
+    {
+        if (p->data == q->data)
+        {
+            val = p->data;
+            return true;
+        }
+        p = p->next;
+        q = q->next;
+    }
+
+    return false;
+}
+
+// 单链表求倒数第k个节点
+Node *FindKthToTail(ClinkedList &list, int k)
+{
+    Node *p = list.head->next;
+    Node *q = list.head->next;
+    for (int i = 0; i < k; i++)
+    {
+        if (p == nullptr)
+        {
+            return nullptr;
+        }
+        p = p->next;
+    }
+    while (p != nullptr)
+    {
+
+        p = p->next;
+        q = q->next;
+    }
+    return q;
+
+}
+

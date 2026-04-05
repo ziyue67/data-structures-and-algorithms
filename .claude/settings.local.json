@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(taskkill //F //IM 约瑟夫.exe)",
+      "Bash(rm -f \"d:\\\\C++VS pro\\\\data-structures-and-algorithms\\\\data structures and algorithms\\\\output\\\\约瑟夫.exe\")"
+    ]
+  }
+}
