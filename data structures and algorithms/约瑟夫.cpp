@@ -81,7 +81,7 @@ public:
 
 int main()
 {
-    CircleList cl(8);
-    cl.josephus(5, 1);
+    CircleList cl(8); // 1 2 3 4 5 6 7 8
+    cl.josephus(5, 1);  
     return 0;
 }

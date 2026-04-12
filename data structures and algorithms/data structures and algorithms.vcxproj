@@ -26,8 +26,10 @@
     <ClCompile Include="vector.cpp" />
     <ClCompile Include="单链表循环.cpp" />
     <ClCompile Include="单链表逆序.cpp" />
+    <ClCompile Include="双向链表.cpp" />
     <ClCompile Include="复盘.cpp" />
     <ClCompile Include="数组的增删改查.cpp" />
+    <ClCompile Include="约瑟夫.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

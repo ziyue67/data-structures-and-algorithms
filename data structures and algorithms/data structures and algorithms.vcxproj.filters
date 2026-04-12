@@ -54,5 +54,11 @@
     <ClCompile Include="单链表循环.cpp">
       <Filter>源文件\链表</Filter>
     </ClCompile>
+    <ClCompile Include="双向链表.cpp">
+      <Filter>源文件\链表</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫.cpp">
+      <Filter>源文件\链表</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
