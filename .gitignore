@@ -1,0 +1,14 @@
+# Visual Studio build artifacts
+x64/
+output/
+
+# User-specific files
+*.user
+
+# Visual Studio generated files
+.vs/
+bin/
+obj/
+*.suo
+*.userosscache
+*.sln.docstates
