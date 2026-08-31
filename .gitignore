@@ -5,6 +5,10 @@ output/
 # User-specific files
 *.user
 
+# Editor / IDE (local, machine-specific settings)
+.vscode/
+.idea/
+
 # Visual Studio generated files
 .vs/
 bin/

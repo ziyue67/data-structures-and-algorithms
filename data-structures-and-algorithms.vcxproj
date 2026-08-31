@@ -140,6 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="数组.cpp" />
+    <ClCompile Include="单项链表.cpp" />
+    <ClCompile Include="双指针奇偶数判断.cpp" />
+    <ClCompile Include="逆序字符串.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

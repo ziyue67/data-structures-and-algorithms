@@ -16,10 +16,28 @@
     <Filter Include="源文件\数组">
       <UniqueIdentifier>{3a1ce403-9de2-4118-aef1-d4c51589f57b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\单项链表">
+      <UniqueIdentifier>{37563ad9-f770-4ec2-805a-3c3b61e0b57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\双指针奇偶数判断">
+      <UniqueIdentifier>{74a91626-7e1e-4579-b398-f3d9996c18d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\逆序字符串">
+      <UniqueIdentifier>{5b50cf7c-a93f-4f0e-8685-969a37ca19e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="数组.cpp">
       <Filter>源文件\数组</Filter>
+    </ClCompile>
+    <ClCompile Include="单项链表.cpp">
+      <Filter>源文件\单项链表</Filter>
+    </ClCompile>
+    <ClCompile Include="双指针奇偶数判断.cpp">
+      <Filter>源文件\双指针奇偶数判断</Filter>
+    </ClCompile>
+    <ClCompile Include="逆序字符串.cpp">
+      <Filter>源文件\逆序字符串</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
