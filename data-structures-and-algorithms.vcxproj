@@ -139,10 +139,10 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="数组.cpp" />
-    <ClCompile Include="单项链表.cpp" />
-    <ClCompile Include="双指针奇偶数判断.cpp" />
-    <ClCompile Include="逆序字符串.cpp" />
+    <ClCompile Include="src\01_array\数组.cpp" />
+    <ClCompile Include="src\03_linked_list\单项链表.cpp" />
+    <ClCompile Include="src\01_array\双指针奇偶数判断.cpp" />
+    <ClCompile Include="src\02_string\逆序字符串.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

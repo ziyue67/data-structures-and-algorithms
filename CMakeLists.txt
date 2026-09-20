@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 
 # ============================================================================
-#  数据结构与算法 练习工程（内层：源码所在目录）
+#  数据结构与算法 练习工程（源码目录 src/，按主题分子目录）
 #
-#  结构：本目录下每个 .cpp 都是带自己 main() 的独立练习程序，
+#  结构：src/ 下每个 .cpp 都是带自己 main() 的独立练习程序，
 #        所以采用「一个源文件 = 一个可执行文件」。
 #        （把多个都带 main() 的文件塞进同一个工程/项目，就会得到
 #          LNK2005 / LNK1169「main 重复定义」或「找不到 main」的报错。）
@@ -75,7 +75,7 @@ else()
   endif()
 endif()
 
-file(GLOB _ALL_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+file(GLOB_RECURSE _ALL_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 list(SORT _ALL_SOURCES)
 
 # ---- 挑出「当前真的能编译」的源文件 ----------------------------------------
@@ -99,7 +99,7 @@ foreach(_src IN LISTS _ALL_SOURCES)
 endforeach()
 
 if(NOT _ALL_SOURCES)
-  message(WARNING "本目录下没有找到任何 .cpp 文件：${CMAKE_CURRENT_SOURCE_DIR}")
+  message(WARNING "src/ 下没有找到任何 .cpp 文件：${CMAKE_CURRENT_SOURCE_DIR}/src")
 endif()
 
 set(_auto 0)
