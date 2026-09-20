@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(taskkill //F //IM 约瑟夫.exe)",
+      "Bash(rm -f \"d:\\\\C++VS pro\\\\data-structures-and-algorithms\\\\data structures and algorithms\\\\output\\\\约瑟夫.exe\")",
+      "Bash(g++ -std=c++20 双向链表.cpp -o output/双向链表.exe)",
+      "Bash(./output/双向链表.exe)",
+      "Bash(g++ -std=c++20 双向链表.cpp -o output/dll_test.exe)",
+      "Bash(./output/dll_test.exe)",
+      "Bash(\"d:/C++VS pro/data-structures-and-algorithms/data structures and algorithms/output/双向循环链表.exe\")",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(\"d:/C++VS pro/data-structures-and-algorithms/data structures and algorithms/output/约瑟夫.exe\")",
+      "Bash(\"d:/C++VS pro/data-structures-and-algorithms/data structures and algorithms/output/双向链表.exe\")",
+      "Bash(g++ -std=c++20 双向循环链表.cpp -o output/双向循环链表.exe)",
+      "Bash(./output/双向循环链表.exe)",
+      "Bash(g++ -std=c++20 双向循环链表.cpp -o output/双向循环链表_new.exe)",
+      "Bash(./output/双向循环链表_new.exe)",
+      "Bash(g++ -std=c++20 -c 双向循环链表.cpp -o 双向循环链表.o)",
+      "Bash(g++ 双向循环链表.o -o output/双向循环链表.exe)"
+    ]
+  }
+}
