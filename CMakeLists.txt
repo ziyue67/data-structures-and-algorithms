@@ -35,6 +35,9 @@ set(_KNOWN
   "单链表是否存在环.cpp=list_has_cycle"
   "单链表求倒数第K个节点.cpp=list_kth_from_end"
   "单链表 有序列表合并.cpp=list_merge_sorted"
+  "双向链表.cpp=double_linked_list"
+  "双向循环链表.cpp=double_circular_linked_list"
+  "约瑟夫环问题.cpp=josephus_problem"
 )
 
 # 如果你确实需要一个含 #if 0 调试块、但仍然要参与构建的文件，
